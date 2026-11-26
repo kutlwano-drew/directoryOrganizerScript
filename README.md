@@ -1,231 +1,272 @@
-# Documentation
+<div align="center">
 
-This Python script helps you organize files in a specified directory (e.g., Downloads) into appropriate folders such as Documents, Videos, Audio, etc. The script will create these folders if they do not exist and includes error handling. Additionally, it allows customization of categories, exclusion of specific file formats, and editing existing configurations.
+# HYBRID FILE ORGANISER
 
-![Script in Action](assets/scriptInAction.gif)
+### A smarter, safer way to bring order to your files — right from the terminal.
 
-## Table of Contents
+**Version 2.0 · Python · CLI-first · Local filesystem utility**
 
-1. **[Features](#features)**
-2. **[Motivation](#motivation)**
-3. **[Requirements](#requirements)**
-4. **[Installation](#installation)**
-5. **[Usage](#usage)**
-    - **[Running the Script](#running-the-script)**
-    - **[Creating Custom Categories](#creating-custom-categories)**
-    - **[Excluding Specific File Formats](#excluding-specific-file-formats)**
-    - **[Editing Existing Categories](#editing-existing-categories)**
-    - **[Restoring Default Settings](#restoring-default-settings)**
-6. **[Contributing](#contributing)**
-7. **[License](#license)**
-8. **[Social](#social)**
+<!-- Replace this block with a logo/banner image if you make one. -->
 
-## Features
+[Features](#what-hybrid-can-do) · [Preview](#in-action) · [Install](#installation) · [Usage](#getting-started) · [Changelog](CHANGELOG.md)
 
-- Automatically organizes files into predefined categories.
-- Creates folders if they do not exist.
-- Includes error handling.
-- Customizable file categories.
-- Allows exclusion of specified file formats.
-- Provides an option to edit existing categories.
-- Option to restore default settings.
+</div>
 
-## Motivation
+---
 
-This project was created after trying multiple apps that claim to organize files but often have restrictions that require payments to access basic features. The goal was to create a convenient and free solution for organizing files. A desktop application will be ready in a short while to enhance this convenience further.
+## Contents
 
-## Requirements
+Click any section to jump straight there. Each section also has navigation links at its end so this README can be explored like a small app.
 
-- Python 3.x
 
+- [01 · About](#about-hybrid)
+- [02 · What's new in 2.0](#whats-new-in-20)
+- [03 · Features](#what-hybrid-can-do)
+- [04 · In action](#in-action)
+- [05 · Installation](#installation)
+- [06 · Getting started](#getting-started)
+- [07 · Safety & control](#safety--control)
+- [08 · Configuration](#configuration)
+- [09 · Requirements](#requirements)
+- [10 · Project structure](#project-structure)
+- [11 · Changelog](#changelog)
+- [12 · Feedback & contributions](#feedback--contributions)
+
+---
+
+
+## About HYBRID
+
+HYBRID FILE ORGANISER started as a straightforward Python script: move files into folders based on their extensions. Version 2.0 is a major overhaul of that original idea, evolving it into a more capable, interactive file-management utility while keeping the terminal at the centre of the experience.
+
+
+HYBRID helps you inspect directories, plan organisation, find duplicates, rename files in batches, and review past operations — without needing a graphical interface or cloud service.
+
+**The philosophy:** keep file management practical, local, understandable, and under your control.
+
+[↑ Back to top](#hybrid-file-organiser) · [Next: What's new →](#whats-new-in-20)
+
+---
+
+## What's new in 2.0
+
+Version 2.0 replaces the original single-script workflow with a modular application and a richer CLI experience.
+
+| Original script | HYBRID 2.0 overhaul |
+|---|---|
+| Basic extension-based sorting | Expanded organisation workflow and preview |
+| Simple text prompts | Rich terminal presentation |
+| Session-only category settings | Persistent configuration |
+| No operation history | SQLite-backed operation history |
+| No undo | Undo for supported operations |
+| No duplicate analysis | SHA-256 duplicate detection |
+| No batch rename | Batch renaming tools |
+| Minimal directory insight | Scanning and directory analysis |
+| Single script | Modular codebase |
+
+See the full [changelog](CHANGELOG.md) for the version-by-version record.
+
+[← Previous: About](#about-hybrid) · [↑ Back to top](#hybrid-file-organiser) · [Next: Features →](#what-hybrid-can-do)
+
+---
+
+## What HYBRID can do
+
+HYBRID combines file organisation with tools that help you inspect, manage, and understand the contents of your directories.
+
+### Organise files
+Group files into categories using configurable file-type rules. Preview planned changes before committing to an organisation operation.
+
+### Preview before committing
+Review the proposed organisation plan and inspect category contents before moving files. Keep control over what the operation will do.
+
+### Find duplicates
+Identify duplicate content using SHA-256 hashing rather than relying on filenames alone. Review duplicate groups and understand potential space savings.
+
+### Batch rename
+Apply renaming operations to groups of files rather than changing each filename one at a time.
+
+### Scan and inspect
+Scan directories, review file information, and use available analysis tools to get a better picture of what is inside.
+
+### Operation history & undo
+Review recorded operations and undo supported actions where available. Persistent records help make previous activity easier to understand.
+
+### Persistent settings
+Retain supported settings between launches, including organisation preferences and configuration.
+
+### CLI experience
+A terminal-first interface with Rich formatting for clearer menus, tables, summaries, and status feedback. No GUI, browser, or cloud account is required.
+
+[← Previous: What's new](#whats-new-in-20) · [↑ Back to top](#hybrid-file-organiser) · [Next: In action →](#in-action)
+
+---
+## In action
+
+The demonstrations below are hosted on GitHub and embedded using remote image URLs. Replace `USERNAME` and `REPOSITORY` with your GitHub account and repository name when uploading the GIFs.
+
+<details>
+<summary><strong>Organisation preview</strong> — scan, category breakdown, and preview before applying</summary>
+
+![HYBRID organisation preview](https://raw.githubusercontent.com/USERNAME/REPOSITORY/main/assets/gifs/organise-preview.gif)
+
+</details>
+
+<details>
+<summary><strong>Duplicate finder</strong> — duplicate groups and hash-based matching</summary>
+
+![HYBRID duplicate finder](https://raw.githubusercontent.com/USERNAME/REPOSITORY/main/assets/gifs/duplicate-finder.gif)
+
+</details>
+
+<details>
+<summary><strong>Batch rename</strong> — rename planning and resulting filenames</summary>
+
+![HYBRID batch rename](https://raw.githubusercontent.com/USERNAME/REPOSITORY/main/assets/gifs/batch-rename.gif)
+
+</details>
+
+<details>
+<summary><strong>History and undo</strong> — recorded operations and undo workflow</summary>
+
+![HYBRID history and undo](https://raw.githubusercontent.com/USERNAME/REPOSITORY/main/assets/gifs/history-undo.gif)
+
+</details>
+
+Record short demonstrations using a test directory. Keep the terminal text readable and avoid exposing private filenames or paths.
+
+
+[← Previous: Features](#what-hybrid-can-do) · [↑ Back to top](#hybrid-file-organiser) · [Next: Installation →](#installation)
+
+---
 ## Installation
 
-1. **Clone the repository:**
+### 1. Get the project
+Download or clone the repository, then open a terminal in the project directory.
 
-    ```sh
-    git clone https://github.com/TheSageAnomaly/directoryOrganizerScript.git
-    cd directoryOrganizerScript
-    ```
+### 2. Create a virtual environment
 
-2. **Ensure you have Python 3 installed:**
+**Windows (PowerShell):**
+```powershell
+py -3 -m venv .venv
+.\.venv\Scripts\Activate.ps1
+```
 
-    ```sh
-    python --version
-    ```
+**Linux / macOS:**
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+```
 
-## Usage
+### 3. Install dependencies
+```bash
+python -m pip install --upgrade pip
+pip install -r requirements.txt
+```
 
-### Running the Script
+### 4. Launch HYBRID
+```bash
+python run_hybrid_file_organiser.py
+```
 
-1. **Navigate to the directory containing the script:**
+[← Previous: In action](#in-action) · [↑ Back to top](#hybrid-file-organiser) · [Next: Getting started →](#getting-started)
 
-    ```sh
-    cd directoryOrganizerScript
-    ```
+---
+## Getting started
 
-2. **Run the script:**
+1. Launch HYBRID from your terminal.
+2. Choose the tool or workflow from the interactive menu.
+3. Select or enter the directory you want to work with.
+4. Review the scan, analysis, or proposed operation where a preview is available.
+5. Confirm when you're satisfied, then review the result summary.
 
-    ```sh
-    python3 organizer.py
-    ```
+The exact menu labels and available actions are shown in the app itself. For file-moving operations, review the preview carefully before confirming.
 
-3. **Select an option from the main menu:**
+[← Previous: Installation](#installation) · [↑ Back to top](#hybrid-file-organiser) · [Next: Safety & control →](#safety--control)
 
-    ```sh
-    Main Menu:
-    1. Start the script
-    2. Create custom category
-    3. Exclude specified file formats
-    4. Edit existing sub-directory configs
-    5. Restore to default settings
-    6. Exit
-    Enter your choice: 
-    ```
+---
+## Safety & control
 
-![Running the Script](assets/scriptInAction.png)
+HYBRID is intended to keep the user in control of file operations.
 
-### Creating Custom Categories
+- Review organisation previews before applying moves.
+- Duplicate identification is for review; don't delete files solely because a tool marks them as duplicates.
+- Undo is available for supported recorded operations. Not every filesystem action is necessarily reversible.
+- Keep backups of important files before large organisation or rename operations.
+- Try new rules and workflows on a disposable test directory first.
+- Be mindful of permissions, symbolic links, locked files, and destination-name conflicts.
 
-You can create custom categories directly from the console.
+[← Previous: Getting started](#getting-started) · [↑ Back to top](#hybrid-file-organiser) · [Next: Configuration →](#configuration)
 
-1. **Select option 2 from the main menu:**
+---
+## Configuration
 
-    ```sh
-    Main Menu:
-    1. Start the script
-    2. Create custom category
-    3. Exclude specified file formats
-    4. Edit existing sub-directory configs
-    5. Restore to default settings
-    6. Exit
-    Enter your choice: 2
-    ```
+HYBRID stores supported settings persistently so that configuration can carry across launches. Category and organisation behaviour can be adjusted using the settings and configuration features exposed in the CLI.
 
-2. **Follow the prompts to enter the folder name and file extensions:**
+Configuration details and defaults may vary by build; use the in-app settings and the project configuration module as the authoritative reference for your local version.
 
-    ```sh
-    Enter the folder name (or * to go back): Ebooks
-    Enter file extensions (separated by commas): .epub, .mobi
-    ```
+[← Previous: Safety & control](#safety--control) · [↑ Back to top](#hybrid-file-organiser) · [Next: Requirements →](#requirements)
 
-3. **The new category will be added and you'll be returned to the main menu.**
+---
+## Requirements
 
-![Creating Custom Category](assets/createCustomSebdirectory.gif)
+- **Python 3.10 or newer**
+- **Rich** — terminal formatting and presentation
+- **SQLite** — included with Python; used for persistent records
 
-### Excluding Specific File Formats
+Install Python packages using:
+```bash
+pip install -r requirements.txt
+```
 
-You can exclude specific file formats from being organized.
+[← Previous: Configuration](#configuration) · [↑ Back to top](#hybrid-file-organiser) · [Next: Project structure →](#project-structure)
 
-1. **Select option 3 from the main menu:**
+---
+## Project structure
 
-    ```sh
-    Main Menu:
-    1. Start the script
-    2. Create custom category
-    3. Exclude specified file formats
-    4. Edit existing sub-directory configs
-    5. Restore to default settings
-    6. Exit
-    Enter your choice: 3
-    ```
+```text
+HYBRID FILE ORGANISER/
+├── run_hybrid_file_organiser.py    # Application entry point
+├── hybrid_file_organiser/
+│   ├── app.py                      # Application orchestration
+│   ├── ui.py                       # CLI presentation and interaction
+│   ├── scanner.py                   # Directory scanning
+│   ├── engine.py                    # File operation engine
+│   ├── intelligence.py               # Directory analysis tools
+│   ├── config.py                    # Persistent configuration
+│   └── database.py                   # SQLite persistence
+├── tests/                             # Automated tests
+├── requirements.txt
+├── pyproject.toml
+├── CHANGELOG.md
+└── README.md
+```
 
-2. **Follow the prompts to enter the file formats to exclude:**
+[← Previous: Requirements](#requirements) · [↑ Back to top](#hybrid-file-organiser) · [Next: Changelog →](#changelog)
 
-    ```sh
-    Enter file formats to exclude (separated by commas): .epub, .mkv
-    Exclude the following file formats: ['.epub', '.mkv']? (yes/no): yes
-    ```
+---
+## Changelog
 
-3. **The specified formats will be excluded and you'll be returned to the main menu.**
+HYBRID 2.0 is a major overhaul of the original single-script file sorter. Read the full [CHANGELOG](CHANGELOG.md) for detailed additions and changes.
 
-![Excluding File Formats](assets/excludeFileFormats.gif)
+[← Previous: Project structure](#project-structure) · [↑ Back to top](#hybrid-file-organiser) · [Next: Feedback →](#feedback--contributions)
 
-### Editing Existing Categories
+---
+## Feedback & contributions
 
-You can edit existing categories, including adding, editing, and removing file formats, and renaming folders.
+Found a bug, have an idea, or want to improve HYBRID? Issues, feature suggestions, and contributions are welcome. When reporting a problem, include your operating system, Python version, steps to reproduce, and any relevant error output — remove personal paths or sensitive details first.
 
-1. **Select option 4 from the main menu:**
 
-    ```sh
-    Main Menu:
-    1. Start the script
-    2. Create custom category
-    3. Exclude specified file formats
-    4. Edit existing sub-directory configs
-    5. Restore to default settings
-    6. Exit
-    Enter your choice: 4
-    ```
+Thanks for checking out **HYBRID FILE ORGANISER**. Keep it local. Keep it clear. Stay in control.
 
-2. **Follow the prompts to select the category to edit and make changes:**
 
-    ```sh
-    Existing Categories:
-    1. Documents
-    2. Videos
-    3. Audio
-    ...
-    Select a folder to edit by number (or * to go back): 1
-    
-    Editing Category: Documents
-    Current extensions: ['.pdf', '.doc', '.docx', '.txt', '.odt', '.rtf']
-    1. Add new file formats
-    2. Edit existing file formats
-    3. Remove file formats
-    4. Rename folder
-    5. Go back
-    Enter your choice: 1
-    ```
+[← Previous: Changelog](#changelog) · [↑ Back to top](#hybrid-file-organiser)
 
-3. **Make the desired changes and return to the main menu when done.**
 
-![Editing Categories](assets/customConfigs.gif)
+<div align="center">
 
-### Restoring Default Settings
+**HYBRID FILE ORGANISER · Version 2.0**
 
-You can restore the script to its default settings, which will remove all custom configurations.
+*Organise with clarity. Operate with confidence.*
 
-1. **Select option 5 from the main menu:**
-
-    ```sh
-    Main Menu:
-    1. Start the script
-    2. Create custom category
-    3. Exclude specified file formats
-    4. Edit existing sub-directory configs
-    5. Restore to default settings
-    6. Exit
-    Enter your choice: 5
-    ```
-
-2. **Confirm the action:**
-    ```sh
-
-This will remove all custom sub-directory configurations and restore to default settings. Do you wish to proceed? (yes/no): yes
-    ```
-
-3. **The settings will be restored and you'll be returned to the main menu.**
-
-![Restoring Defaults](assets/restoreToDefualt.gif)
-
-###### note: you may have to reload the script for some changes to take effect,for example,restoring back to defaults
-
-## Contributing
-
-1. Fork the repository.
-2. Create a new branch: `git checkout -b my-feature-branch`.
-3. Make your changes and commit them: `git commit -m 'Add some feature'`.
-4. Push to the branch: `git push origin my-feature-branch`.
-5. Submit a pull request.
-
-## License
-
-This project is licensed under the MIT License - see the [License](License.md) file for details.
-
-## Social
-
-Follow me on [X (Twitter)](https://x.com/TheSageAnomaly) - handle: `@TheSageAnomaly`
-
-## Call to Action
-
-If you find this project useful, please star it on GitHub to show your support!
+</div>
